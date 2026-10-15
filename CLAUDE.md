@@ -1,4 +1,4 @@
-# Sentinel: AI Service + Automated Testing Framework
+# Sentinel: automated testing framework + CI, with a small app to inspect
 
 The full spec is in docs/SPEC.md. Read it before any work. It is the source of truth.
 
@@ -15,5 +15,7 @@ The full spec is in docs/SPEC.md. Read it before any work. It is the source of t
 ## Commands
 - Backend tests:  pytest -m unit | integration | regression | api | performance
 - Frontend tests: cd frontend && npm test
-- E2E:            docker compose up -d --build --wait && cd frontend && npx playwright test
+- E2E (needs a fresh stack): docker compose down -v && docker compose up -d --build --wait && cd frontend && npx playwright test
+- Sample runs for local dev: python scripts/seed_runs.py
+- Pull real CI runs: python scripts/sync_github_runs.py
 - Lint:           ruff check . && ruff format --check . ; cd frontend && npm run lint
